@@ -22,30 +22,30 @@ const { frontmatter } = Astro.props;
   <main id="main-content">
     <section id="about" class="app-prose mb-28 max-w-app prose-img:border-0">
       <div class="text-center mb-8">
-        <img 
-          src="src/assets/profile.jpeg" 
-          alt="Daniel Suhett Profile" 
+        <img
+          src="/src/assets/profile.jpeg"
+          alt="Daniel Suhett Profile"
           style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem auto; display: block;"
         />
 
         <h1 class="text-2xl tracking-wider sm:text-3xl mb-2">{frontmatter.title}</h1>
         <div class="flex justify-center gap-4 mb-4">
-          <a 
-            href="/about" 
+          <a
+            href="/about"
             class={`inline-flex items-center px-3 py-1 rounded-md transition-colors ${
-              frontmatter.lang === 'pt-br' 
-                ? 'bg-skin-accent text-skin-inverted' 
+              frontmatter.lang === 'pt-br'
+                ? 'bg-skin-accent text-skin-inverted'
                 : 'bg-skin-fill text-skin-base hover:bg-skin-accent hover:text-skin-inverted'
             }`}
             title="Português"
           >
             🇧🇷 PT
           </a>
-          <a 
-            href="/about-en-us" 
+          <a
+            href="/about-en-us"
             class={`inline-flex items-center px-3 py-1 rounded-md transition-colors ${
-              frontmatter.lang === 'en-us' 
-                ? 'bg-skin-accent text-skin-inverted' 
+              frontmatter.lang === 'en-us'
+                ? 'bg-skin-accent text-skin-inverted'
                 : 'bg-skin-fill text-skin-base hover:bg-skin-accent hover:text-skin-inverted'
             }`}
             title="English"
