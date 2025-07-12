@@ -1,6 +1,5 @@
 export const SITE = {
   website: "https://suhett.com/",
-  author: "Daniel Suhett",
   profile: "https://br.linkedin.com/in/daniel-suhett",
   desc: "Pensamentos, ideias e projetos de Daniel Suhett",
   title: "Daniel Suhett",
