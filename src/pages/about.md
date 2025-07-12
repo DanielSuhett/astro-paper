@@ -1,37 +1,70 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "Daniel Suhett"
+lang: "pt-br"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+**Desenvolvedor**
 
-![Astro Paper](public/astropaper-og.jpg)
+Possuo 6 anos de experiência, abandonei a faculdade durante a pandemia e já contribuí em uma Software House, em uma empresa logística e agora estou com o time da Haytek revolucionando o mercado óptico atendendo clientes do Brasil inteiro.   
+**Meu interesse é transformar código em valor**.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+## Experiência Profissional
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+### [Haytek](https://haytek.com.br/)
+B2B e-commerce, onde estou há 4 anos.
 
-## Features
+**Desenvolvedor Sênior** • abr. 2024 - presente   
+>Como sênior tive a oportunidade de aumentar a escalabilidade e resiliência
+com arquitetura assíncrona em contextos de alto acoplamento e baixo SLA.
+Participei ativamente da implementação de observabilidade, com APM, logs e dashboards dando luz a índices como latência e throughput dos serviços.
+Assim como a responsabilidade de manter todo e-commerce no ar com práticas de **DevOps** em um time que cuida verticalmente de todo o ciclo de vendas online.
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+**Desenvolvedor Pleno** • jan. 2022 - set. 2024    
+>Como pleno me dediquei muito para refatoração e otimização de performance. 
+O e-commerce não aguentava seu número de usuários ativos, minha missão foi ativamente reconhecer 
+e melhorar queries que poderiam ser otimizada, funcionalidades que poderiam ser degradadas, 
+algoritmos ineficientes etc.
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+**Desenvolvedor Júnior** • jul. 2021 - jan. 2022
+>Precisei me adaptar a procedures rodando dentro de um Microsoft SQL Server, 
+e um monolito escrito em Python Flask que fazia uso dessas procedures. Fui contratado para participar do time 
+que iria levar o e-commerce para a Google Cloud Platform e esse monolito em microserviços utilizando NodeJS e MongoDB.
 
-and so much more.
 
-## Show your support
+### [Clique Retire](https://www.cliqueretire.com.br/)
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+Smart lockers para logística, varejo, condomínios e serviços.
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
+**Desenvolvedor Sênior** • out. 2020 - jul. 2021  
+>Implementação de integração para uma nova opção de entrega 
+em lojas VTEX e Shopify utilizando os armários inteligentes da Clique Retire, 
+atuação em frameworks proprietários como VtexIO e Shopify Liquid.
 
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
+**Desenvolvedor Júnior** • fev. 2020 - out. 2020  
+>Atuação em projetos full stack com DynamoDB, AWS Lambda e Node.
 
-Kyay zuu! 🙏🏼
+### [Sonata](https://sonatalab.com/)
+**Estagiário de Desenvolvimento** • ago. 2019 - jan. 2020  
+>Primeiros passos na programação profissional, atuação com MEAN (MongoDB, Express.js, AngularJS e Node.js) stack.
+
+## Formação
+**Ciência da Computação** • Descomplica Faculdade Digital • 2023 - presente   
+**Ciência da Computação** • Centro Universitário Carioca • 2018 - 2020
+## Tecnologias que trabalho
+• Node.js 
+• TypeScript 
+• Golang 
+• MongoDB 
+• SQL Server 
+• React   
+• Kubernetes 
+• Google Cloud Plataform 
+• DevOps
+
+
+
+## Idiomas
+
+**Português**: Nativo  
+**English**: A2 

@@ -1,0 +1,155 @@
+---
+alwaysApply: false
+---
+# AstroPaper Blog - MDX Generation and Validation Rules
+
+## Content Schema Requirements
+When generating or validating MDX files, ensure compliance with the blog schema defined in `src/content.config.ts`:
+
+### Required Fields
+- `title`: string - Clear, descriptive post title
+- `pubDatetime`: date - Publication date in ISO format (YYYY-MM-DDTHH:mm:ss.sssZ)
+- `description`: string - SEO-friendly description (150-160 chars recommended)
+
+### Optional Fields
+- `author`: string - Defaults to SITE.author if not specified
+- `modDatetime`: date - Last modification date in ISO format
+- `featured`: boolean - Whether post appears in featured section
+- `draft`: boolean - If true, post won't be published
+- `tags`: string[] - Defaults to ["others"] if not specified
+- `ogImage`: string - Path to OG image or external URL
+- `canonicalURL`: string - Canonical URL for SEO
+- `hideEditPost`: boolean - Hide edit post link
+- `timezone`: string - Timezone for date display
+
+## MDX File Generation Rules
+
+### File Location
+- Place all blog posts in `src/data/blog/`
+- Use kebab-case for file names (e.g., `my-awesome-post.md`)
+- Avoid files starting with underscore (excluded by loader pattern)
+
+### Frontmatter Template
+```yaml
+---
+title: "Your Post Title"
+description: "Brief description for SEO and previews"
+pubDatetime: 2024-01-01T00:00:00.000Z
+modDatetime: 2024-01-01T00:00:00.000Z
+tags: ["tag1", "tag2"]
+featured: false
+draft: false
+---
+```
+
+### Content Guidelines
+- Use semantic HTML structure
+- Start with H2 (##) for main sections (H1 reserved for title)
+- Include code examples with proper language tags
+- Use relative links for internal content
+- Optimize images and use appropriate alt text
+
+## Validation Rules
+
+### Frontmatter Validation
+- Ensure all required fields are present
+- Validate date formats (ISO 8601)
+- Check tag array contains only strings
+- Verify boolean fields are actual booleans
+- Validate URLs if canonicalURL provided
+
+### Content Structure
+- No H1 headers in content (title serves as H1)
+- Proper heading hierarchy (H2 → H3 → H4)
+- Code blocks have language specifiers
+- Images have alt attributes
+- Links are properly formatted
+
+### File Naming
+- Use kebab-case only
+- No spaces or special characters
+- Descriptive but concise names
+- Avoid generic names like "post-1.md"
+
+## TypeScript Integration
+- When generating code examples, follow user's TypeScript guidelines:
+  - Declare types explicitly
+  - Use camelCase for variables/functions
+  - Use PascalCase for classes/types
+  - No comments in code blocks
+  - Prefer composition over inheritance
+
+## Common Patterns
+
+### Tech Post Template
+```markdown
+---
+title: "Understanding [Technology/Concept]"
+description: "Learn how [technology] works and implement it in [context]"
+pubDatetime: [current-date]
+tags: ["typescript", "tutorial", "web-development"]
+featured: false
+---
+
+## Introduction
+Brief overview of what will be covered.
+
+## Prerequisites
+What readers should know beforehand.
+
+## Implementation
+Step-by-step implementation with code examples.
+
+## Best Practices
+Important considerations and recommendations.
+
+## Conclusion
+Summary and next steps.
+```
+
+### Tutorial Post Template
+```markdown
+---
+title: "How to [Accomplish Task]"
+description: "Step-by-step guide to [accomplish task] with [technology]"
+pubDatetime: [current-date]
+tags: ["tutorial", "guide"]
+featured: false
+---
+
+## What You'll Learn
+Clear learning objectives.
+
+## Setup
+Required tools and dependencies.
+
+## Step-by-Step Guide
+Numbered steps with explanations.
+
+## Troubleshooting
+Common issues and solutions.
+
+## Further Reading
+Links to additional resources.
+```
+
+## Automation Suggestions
+- Auto-generate `pubDatetime` with current timestamp
+- Suggest tags based on content analysis
+- Validate frontmatter against schema before file creation
+- Auto-format dates to ISO 8601
+- Check for duplicate titles
+- Suggest SEO-optimized descriptions
+
+## Quality Checks
+Before finalizing any MDX file:
+1. ✅ All required frontmatter fields present
+2. ✅ Dates in correct ISO format
+3. ✅ Description length appropriate for SEO
+4. ✅ Tags are relevant and properly formatted
+5. ✅ File name follows kebab-case convention
+6. ✅ Content structure follows heading hierarchy
+7. ✅ Code examples have language tags
+8. ✅ Images have alt attributes
+9. ✅ No H1 headers in content body
+10. ✅ Links are properly formatted and functional
