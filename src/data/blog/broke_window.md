@@ -11,15 +11,15 @@ description: Reflexões sobre postura e comportamento em desenvolvimento de soft
 
 Ao ler o Pragmatic Programmer, me deparei com um recorte interessante, a teoria da janela quebrada.
 
->"Em cidades do interior, alguns prédios são belos e limpos, enquanto outros são estruturas deterioradas. Por quê? Pesquisadores da área criminal e da decência urbanas descobriram um fascinante mecanismo acionardor, que torna rapidamente um predio limpo e intacto em uma construção quebrada e abandonada: uma janela quebrada."
+>Em cidades do interior, alguns prédios são belos e limpos, enquanto outros são estruturas deterioradas. Por quê? Pesquisadores da área criminal e da decência urbanas descobriram um fascinante mecanismo acionardor, que torna rapidamente um predio limpo e intacto em uma construção quebrada e abandonada: uma janela quebrada.
 
 Isso acontece, ele explica, por conta do sentimento de abandono que aquela única janela gera nas pessoas.
 
 Você ja deve ter ouvido frases como:
->"Está por todo o projeto todo!" 
+>Está por todo o projeto todo!
 
 Ou então,
->"Sempre fizemos isso!" 
+>Sempre fizemos isso!
 
 São exemplos claros de pessoas que já estão convencidas do abandono através da janela quebrada.
 
