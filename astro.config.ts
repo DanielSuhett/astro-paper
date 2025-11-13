@@ -60,4 +60,7 @@ export default defineConfig({
   experimental: {
     preserveScriptOrder: true,
   },
+  server: {
+    allowedHosts: ["edd85de820c5.ngrok-free.app"],
+  },
 });

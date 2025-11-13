@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Images Style Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .og-preview {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .og-preview h3 {
+            margin: 0;
+            padding: 15px 20px;
+            background: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        /* This mimics your actual OG image design */
+        .og-mock {
+            width: 600px;
+            height: 315px; /* 1200x630 scaled down by 50% */
+            background: #1E1E1E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0;
+        }
+        
+        .og-mock.light {
+            background: #FFFFFF;
+        }
+        
+        .og-accent-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #9085C5, #BDA869);
+        }
+        
+        .og-shadow {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            border: 1.5px solid #C59A8A;
+            background: #2A2A2A;
+            opacity: 0.6;
+            border-radius: 4px;
+            width: 88%;
+            height: 80%;
+            margin: 1.25rem;
+        }
+        
+        .og-main {
+            border: 1.5px solid #C59A8A;
+            background: #1E1E1E;
+            border-radius: 4px;
+            width: 88%;
+            height: 80%;
+            margin: 1rem;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(144, 133, 197, 0.15);
+        }
+        
+        .light .og-main {
+            border-color: #CCCCCC;
+            background: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .light .og-shadow {
+            border-color: #CCCCCC;
+            background: #F5F5F5;
+        }
+        
+        .light .og-accent-bar {
+            background: linear-gradient(180deg, #333333, #000000);
+        }
+        
+        .light .og-title {
+            color: #000000;
+        }
+        
+        .light .og-description {
+            color: #666666;
+        }
+        
+        .light .og-site {
+            color: #333333;
+        }
+        
+        .og-content {
+            display: flex;
+            flex-direction: column;
+            height: 85%;
+            overflow: hidden;
+        }
+        
+        .og-title {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 0.95;
+            color: #BDA869; /* --foreground */
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            letter-spacing: -0.02em;
+        }
+        
+        .og-description {
+            font-size: 14px;
+            color: #8B8B9A; /* lighter version of --muted */
+            line-height: 1.4;
+            margin-top: auto;
+            max-height: 40%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .og-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .og-site {
+            font-size: 12px;
+            color: #9085C5; /* --accent */
+            font-weight: 600;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            text-transform: lowercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Light theme styles */
+        .light-theme {
+            background: #FFFFFF !important;
+        }
+        
+        .light-gradient {
+            background: linear-gradient(180deg, #007ACC, #333333) !important;
+        }
+        
+        .light-shadow {
+            background: #F3F3F3 !important;
+            border-color: #CECECE !important;
+        }
+        
+        .light-main {
+            background: #FFFFFF !important;
+            border-color: #CECECE !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .light-title {
+            color: #333333 !important;
+        }
+        
+        .light-description {
+            color: #616161 !important;
+        }
+        
+        .light-site {
+            color: #007ACC !important;
+        }
+        
+        /* Site OG specific styles */
+        .site-og .og-main {
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .site-og .og-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90%;
+        }
+        
+        .site-og .og-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .site-og .og-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .site-og .og-footer {
+            justify-content: flex-end;
+        }
+        
+        .controls {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .controls h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input[type="text"], input[type="color"], input[type="range"] {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        input[type="range"] {
+            width: 150px;
+        }
+        
+        .color-preview {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .grid-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 OG Images Theme Preview</h1>
+    <p>Your blog now supports both light and dark themes! This preview shows how your OG images will look in both themes. The theme switcher is now active in your header.</p>
+    
+        <div class="controls">
+        <h2>🎛️ Dark Theme Style Controls</h2>
+        <div class="grid-controls">
+            <div class="control-group">
+                <label for="bgColor">Background Color:</label>
+                <input type="color" id="bgColor" value="#1E1E1E">
+                <span class="color-preview" id="bgColorPreview"></span>
+            </div>
+            
+            <div class="control-group">
+                <label for="borderColor">Border Color (--border):</label>
+                <input type="color" id="borderColor" value="#C59A8A">
+                <span class="color-preview" id="borderColorPreview"></span>
+            </div>
+            
+            <div class="control-group">
+                <label for="shadowColor">Shadow Color:</label>
+                <input type="color" id="shadowColor" value="#2A2A2A">
+                <span class="color-preview" id="shadowColorPreview"></span>
+            </div>
+            
+            <div class="control-group">
+                <label for="themeToggle">Theme Preview:</label>
+                <select id="themeToggle">
+                    <option value="dark">Dark Theme</option>
+                    <option value="light">Light Theme</option>
+                </select>
+            </div>            <div class="control-group">
+                <label for="titleSize">Title Font Size:</label>
+                <input type="range" id="titleSize" min="24" max="48" value="36">
+                <span id="titleSizeValue">36px</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="titleText">Preview Title:</label>
+                <input type="text" id="titleText" value="Um novo começo">
+            </div>
+            
+            <div class="control-group">
+                <label for="descriptionText">Preview Description:</label>
+                <input type="text" id="descriptionText" value="Motivos que me levaram a perder o propósito escrevendo em um blog e como pretendo me recuperar disso.">
+            </div>
+        </div>
+    </div>
+    
+    <div class="preview-container">
+        <!-- Site OG Preview -->
+        <div class="og-preview">
+            <h3>🏠 Site OG Image (Homepage)</h3>
+            <div class="og-mock site-og">
+                <div class="og-accent-bar"></div>
+                <div class="og-shadow"></div>
+                <div class="og-main">
+                    <div class="og-content">
+                        <div class="og-title" style="font-size: 42px; margin-bottom: 10px;">Daniel Suhett</div>
+                        <div class="og-description" style="font-size: 16px; margin-top: 0;">Pensamentos, ideias e projetos de Daniel Suhett</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site">suhett.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Post OG Preview -->
+        <div class="og-preview">
+            <h3>🌟 New Dark Theme Post OG</h3>
+            <div class="og-mock">
+                <div class="og-accent-bar"></div>
+                <div class="og-shadow"></div>
+                <div class="og-main">
+                    <div class="og-content">
+                        <div class="og-title" id="previewTitle">Um novo começo</div>
+                        <div class="og-description" id="previewDescription">Motivos que me levaram a perder o propósito escrevendo em um blog e como pretendo me recuperar disso.</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site">daniel suhett</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Long Title Example -->
+        <div class="og-preview">
+            <h3>📚 Long Title Example</h3>
+            <div class="og-mock">
+                <div class="og-accent-bar"></div>
+                <div class="og-shadow"></div>
+                <div class="og-main">
+                    <div class="og-content">
+                        <div class="og-title">Javascript no servidor é complicado</div>
+                        <div class="og-description">Um olhar honesto sobre Node, Deno e Bun - performance, ecossistema e quando usar cada um em projetos reais.</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site">daniel suhett</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Short Title Example -->
+        <div class="og-preview">
+            <h3>⚡ Short Title Example</h3>
+            <div class="og-mock">
+                <div class="og-accent-bar"></div>
+                <div class="og-shadow"></div>
+                <div class="og-main">
+                    <div class="og-content">
+                        <div class="og-title">Observabilidade</div>
+                        <div class="og-description">Meus insights e aprendizados sobre observabilidade em sistemas distribuídos.</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site">daniel suhett</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Light Theme Examples -->
+        <div class="og-preview">
+            <h3>☀️ Light Theme - Post Example</h3>
+            <div class="og-mock light-theme">
+                <div class="og-accent-bar light-gradient"></div>
+                <div class="og-shadow light-shadow"></div>
+                <div class="og-main light-main">
+                    <div class="og-content">
+                        <div class="og-title light-title">Clean Code Principles</div>
+                        <div class="og-description light-description">Principles and practices for writing maintainable, readable code that scales with your team.</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site light-site">daniel suhett</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="og-preview">
+            <h3>☀️ Light Theme - Site Example</h3>
+            <div class="og-mock site-og light-theme">
+                <div class="og-accent-bar light-gradient"></div>
+                <div class="og-shadow light-shadow"></div>
+                <div class="og-main light-main">
+                    <div class="og-content">
+                        <div class="og-title light-title" style="font-size: 42px; margin-bottom: 10px;">Daniel Suhett</div>
+                        <div class="og-description light-description" style="font-size: 16px; margin-top: 0;">Pensamentos, ideias e projetos de Daniel Suhett</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site light-site">suhett.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Light Theme Examples -->
+        <div class="og-preview">
+            <h3>☀️ Light Theme - Post Example</h3>
+            <div class="og-mock light">
+                <div class="og-accent-bar"></div>
+                <div class="og-shadow"></div>
+                <div class="og-main">
+                    <div class="og-content">
+                        <div class="og-title">Um novo começo</div>
+                        <div class="og-description">Motivos que me levaram a perder o propósito escrevendo em um blog e como pretendo me recuperar disso.</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site">daniel suhett</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="og-preview">
+            <h3>☀️ Light Theme - Site Homepage</h3>
+            <div class="og-mock light site-og">
+                <div class="og-accent-bar"></div>
+                <div class="og-shadow"></div>
+                <div class="og-main">
+                    <div class="og-content">
+                        <div class="og-title" style="font-size: 42px; margin-bottom: 10px;">Daniel Suhett</div>
+                        <div class="og-description" style="font-size: 16px; margin-top: 0;">Pensamentos, ideias e projetos de Daniel Suhett</div>
+                    </div>
+                    <div class="og-footer">
+                        <div class="og-site">suhett.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 40px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h2>📝 Changes Made</h2>
+        <p>Once you're happy with the preview:</p>
+        <ol>
+            <li>Note down the values from the controls above</li>
+            <li>Edit <code>src/utils/og-templates/post.js</code> and <code>src/utils/og-templates/site.js</code></li>
+            <li>Update the style properties in the templates to match your preview</li>
+            <li>Run <code>npm run build</code> to regenerate your site with the new OG images</li>
+        </ol>
+        
+        <h3>🎯 Theme Switcher & OG Updates:</h3>
+        <ul>
+            <li><strong>🔄 Theme Switcher Activated:</strong> `lightAndDarkMode: true` - toggle in header</li>
+            <li><strong>🌑 Dark Theme:</strong> Original colors (#BDA869, #9085C5, #C59A8A)</li>
+            <li><strong>☀️ Light Theme:</strong> Clean black/white (#FFFFFF bg, #000000 text, #CCCCCC borders)</li>
+            <li><strong>� Dynamic OG Images:</strong> Automatically adapt to user's theme preference</li>
+            <li><strong>✅ Post descriptions</strong> in both themes</li>
+            <li><strong>✅ Removed "by Daniel Suhett"</strong> from post images</li>
+            <li><strong>🌈 Gradient Accent Bar:</strong> Adapts to theme colors</li>
+            <li><strong>🧱 Enhanced Shadows:</strong> Theme-appropriate depth effects</li>
+            <li><strong>✒️ Typography:</strong> Monospace titles + sans-serif descriptions</li>
+        </ul>
+    </div>
+
+    <script>
+        // Live preview updates
+        document.getElementById('bgColor').addEventListener('input', function() {
+            const color = this.value;
+            document.querySelectorAll('.og-main').forEach(el => {
+                el.style.background = color;
+            });
+            document.getElementById('bgColorPreview').style.background = color;
+        });
+        
+        document.getElementById('borderColor').addEventListener('input', function() {
+            const color = this.value;
+            document.querySelectorAll('.og-main, .og-shadow').forEach(el => {
+                el.style.borderColor = color;
+            });
+            document.getElementById('borderColorPreview').style.background = color;
+        });
+        
+        document.getElementById('shadowColor').addEventListener('input', function() {
+            const color = this.value;
+            document.querySelectorAll('.og-shadow').forEach(el => {
+                el.style.background = color;
+            });
+            document.getElementById('shadowColorPreview').style.background = color;
+        });
+        
+        document.getElementById('titleSize').addEventListener('input', function() {
+            const size = this.value + 'px';
+            document.querySelectorAll('.og-title').forEach(el => {
+                el.style.fontSize = size;
+            });
+            document.getElementById('titleSizeValue').textContent = size;
+        });
+        
+        document.getElementById('titleText').addEventListener('input', function() {
+            document.getElementById('previewTitle').textContent = this.value;
+        });
+        
+        document.getElementById('descriptionText').addEventListener('input', function() {
+            document.getElementById('previewDescription').textContent = this.value;
+        });
+        
+        // Theme toggle functionality
+        document.getElementById('themeToggle').addEventListener('change', function() {
+            const theme = this.value;
+            const allMocks = document.querySelectorAll('.og-mock');
+            
+            allMocks.forEach(mock => {
+                if (theme === 'light') {
+                    mock.classList.add('light-theme');
+                    // Update gradient bars
+                    const gradientBar = mock.querySelector('.og-accent-bar');
+                    if (gradientBar) gradientBar.classList.add('light-gradient');
+                    // Update shadows
+                    const shadow = mock.querySelector('.og-shadow');
+                    if (shadow) shadow.classList.add('light-shadow');
+                    // Update main containers
+                    const main = mock.querySelector('.og-main');
+                    if (main) main.classList.add('light-main');
+                    // Update text colors
+                    const titles = mock.querySelectorAll('.og-title');
+                    titles.forEach(title => title.classList.add('light-title'));
+                    const descriptions = mock.querySelectorAll('.og-description');
+                    descriptions.forEach(desc => desc.classList.add('light-description'));
+                    const sites = mock.querySelectorAll('.og-site');
+                    sites.forEach(site => site.classList.add('light-site'));
+                } else {
+                    // Remove light theme classes
+                    mock.classList.remove('light-theme');
+                    mock.querySelectorAll('.light-gradient, .light-shadow, .light-main, .light-title, .light-description, .light-site')
+                        .forEach(el => el.className = el.className.replace(/light-\w+/g, '').trim());
+                }
+            });
+            
+            // Update color preview values
+            if (theme === 'light') {
+                document.getElementById('bgColor').value = '#FFFFFF';
+                document.getElementById('borderColor').value = '#CECECE';
+                document.getElementById('shadowColor').value = '#F3F3F3';
+                document.getElementById('bgColorPreview').style.background = '#FFFFFF';
+                document.getElementById('borderColorPreview').style.background = '#CECECE';
+                document.getElementById('shadowColorPreview').style.background = '#F3F3F3';
+            } else {
+                document.getElementById('bgColor').value = '#1E1E1E';
+                document.getElementById('borderColor').value = '#C59A8A';
+                document.getElementById('shadowColor').value = '#2A2A2A';
+                document.getElementById('bgColorPreview').style.background = '#1E1E1E';
+                document.getElementById('borderColorPreview').style.background = '#C59A8A';
+                document.getElementById('shadowColorPreview').style.background = '#2A2A2A';
+            }
+        });
+        
+        // Initialize color previews
+        document.getElementById('bgColorPreview').style.background = '#1E1E1E';
+        document.getElementById('borderColorPreview').style.background = '#C59A8A';
+        document.getElementById('shadowColorPreview').style.background = '#2A2A2A';
+    </script>
+</body>
+</html>
