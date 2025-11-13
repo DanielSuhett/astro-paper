@@ -2,7 +2,7 @@
 author: Daniel Suhett
 pubDatetime: 2025-11-13
 title: Javascript no servidor é complicado
-slug: node-vs-bun-vs-deno
+slug: javascript-server-dilema
 featured: true
 tags:
   - backend
@@ -100,7 +100,7 @@ Mas aqui vai um resumo das minhas experiências recentes:
 - Adorei o JSR apesar de pouco útil.
 - Sistema de permissões é chato, eu não quero e eu sou obrigado a usar.
 - Hono é exatamente o que se propõe a ser, simples e não opinativo, me deixando interagir muito mais com outras coisas do que o framework em si, totalmente oposto do Nest e Elysia.
-## Bun + Elysia + Biome
+## [Bun + Elysia + Biome](https://github.com/DanielSuhett/typesafe-api-boilerplate)
 - Para projetos pessoais, **eu escolheria Elysia 100% das vezes**.
 - Difícil de descer no começo, parece estranho e pouco pragmático.
 - Precisei configurar linter e formatter, o que me incomodou.
@@ -130,4 +130,6 @@ Deno, na minha opinião, acerta em muita coisa **hoje**, apesar dos erros antigo
 Node continua sendo uma opção sólida se você não estiver procurando aventuras.
 
 E se um dia você cansar, como eu às vezes canso, experimente Go.
+
+
 
